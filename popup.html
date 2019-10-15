@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+    <head>
+        <title>FS</title>
+    </head>
+    <style type="text/css">
+	body {
+            margin: 5px;
+        }
+	h1 {
+	    font-size: 15px;
+	    text-align: center;
+        }
+    </style>
+    <body>
+        <h1>FS</h1>
+        <button id="assign">Assign</button>
+        <textarea id="assignText"></textarea><br/>
+        <button id="clickFS">FS</button>
+        <button id="clickFSReject">FS-reject</button>
+        <button id="clickMap">FFS-Map</button>
+        <button id="fsMapFull">FFS-Map-Full</button>
+        <button id="clickFSTC">FSTC</button>
+        <button id="clickAU">AU</button>
+        <button id="clickVER">Ver</button>
+        <button id="clickCR">CR</button>
+        <button id="clickCRSkip">CR-Skip</button>
+
+        <button id="pollStart">Poll Start</button>
+        <button id="pollEnd">Poll End</button>
+
+        <div>AU</div>
+        <div id="au">
+        </div>
+        <div>FQA</div>
+        <div id="fqa">
+        </div>
+        <div>Verification</div>
+        <div id="ver">
+        </div>
+        <div>Review</div>
+        <div id="rev">
+        </div>
+
+        <h1>Diff</h1>
+
+        <textarea id="diff1"></textarea>
+    <textarea id="diff2"></textarea>
+    <button id="diff"></button>
+    <div id="display"></div>
+    </body>
+    <script src="diff.min.js"></script>
+    <script src="popup.js"></script>
+</html>
