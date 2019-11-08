@@ -3,16 +3,19 @@
  */
 
 function publish(id, result) {
+    console.log("publish: " + result);
     var div = document.createElement("div");
     div.id = id;
     div.style.border = "1px solid red";
-    div.style.display='none';
+    div.style.display = 'none';
     div.innerHTML = result;
     document.querySelector("div#description-val").parentElement.appendChild(div);
 }
 function diffy() {
     console.log("diffy()")
     try {
+        if (document.getElementById("mapElement")) document.getElementById("mapElement").parentElement.removeChild(document.getElementById("mapElement"))
+
         var first = document.getElementById("nzt1").firstChild.textContent;
 
         var second = document.querySelector("div#description-val").textContent;
@@ -34,7 +37,8 @@ function diffy() {
         console.log("diffy() diff")
         var diff = Diff.diffChars(first, second),
             display = document.querySelector("div#description-val").parentElement,
-            fragment = document.createDocumentFragment();
+            fragment = document.createElement("div");
+        fragment.id = "mapElement";
 
         console.log("diffy() display")
         diff.forEach(function (part) {
@@ -49,12 +53,15 @@ function diffy() {
             fragment.appendChild(span);
         });
 
-        if (!display){
+        if (!display) {
             alert("no display");
         }
 
         display.appendChild(fragment);
-    }catch(e){
+
+        if (document.getElementById("nzt1")) document.getElementById("nzt1").parentElement.removeChild(document.getElementById("nzt1"))
+
+    } catch (e) {
         console.log(e);
         alert(e);
     }

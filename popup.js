@@ -34,6 +34,71 @@ document.addEventListener('DOMContentLoaded', function () {
             }
     }, false);
 
+    document.getElementById('assignEpic').addEventListener('click', function () {
+        chrome.tabs.getSelected(null, function (tab) {
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            console.log("assign epic key: " + key);
+            var xhr = new XMLHttpRequest;
+            xhr.open('GET', 'http://localhost:3000/assign-epic?key=' + encodeURI(key), true);
+            //xhr.onload = function (e) {alert(xhr.responseText)};
+            xhr.send();
+        });
+    }, false);
+
+    document.getElementById('linkPa').addEventListener('click', function () {
+        chrome.tabs.getSelected(null, function (tab) {
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            console.log("link pa: " + key);
+            var xhr = new XMLHttpRequest;
+            xhr.open('GET', 'http://localhost:3000/link-pa?key=' + encodeURI(key), true);
+            //xhr.onload = function (e) {alert(xhr.responseText)};
+            xhr.send();
+        });
+    }, false);
+
+    document.getElementById('linkCr').addEventListener('click', function () {
+        chrome.tabs.getSelected(null, function (tab) {
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            console.log("link pa: " + key);
+            var xhr = new XMLHttpRequest;
+            xhr.open('GET', 'http://localhost:3000/link-cr?key=' + encodeURI(key), true);
+            //xhr.onload = function (e) {alert(xhr.responseText)};
+            xhr.send();
+        });
+    }, false);
+
+    document.getElementById('paApprove').addEventListener('click', function () {
+        chrome.tabs.getSelected(null, function (tab) {
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            console.log("link pa: " + key);
+            var xhr = new XMLHttpRequest;
+            xhr.open('GET', 'http://localhost:3000/pa-approve?key=' + encodeURI(key), true);
+            //xhr.onload = function (e) {alert(xhr.responseText)};
+            xhr.send();
+        });
+    }, false);
+
+    document.getElementById('paReject').addEventListener('click', function () {
+        chrome.tabs.getSelected(null, function (tab) {
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            console.log("link pa: " + key);
+            var xhr = new XMLHttpRequest;
+            xhr.open('GET', 'http://localhost:3000/pa-reject?key=' + encodeURI(key), true);
+            //xhr.onload = function (e) {alert(xhr.responseText)};
+            xhr.send();
+        });
+    }, false);
+
+    document.getElementById('rejectEpic').addEventListener('click', function () {
+        chrome.tabs.getSelected(null, function (tab) {
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            console.log("reject epic key: " + key);
+            var xhr = new XMLHttpRequest;
+            xhr.open('GET', 'http://localhost:3000/reject-epic?key=' + encodeURI(key) + "&reason="+encodeURIComponent(document.getElementById("epicRejectReason").value), true);
+            //xhr.onload = function (e) {alert(xhr.responseText)};
+            xhr.send();
+        });
+    }, false);
 
     document.getElementById('assign').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
@@ -45,6 +110,21 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log("assign key: " + key);
             var xhr = new XMLHttpRequest;
             xhr.open('GET', 'http://localhost:3000/assign?key=' + encodeURI(key), true);
+            //xhr.onload = function (e) {alert(xhr.responseText)};
+            xhr.send();
+        });
+    }, false);
+
+    document.getElementById('assignFQA').addEventListener('click', function () {
+        chrome.tabs.getSelected(null, function (tab) {
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            var textValue = document.getElementById('assignText').value;
+            if (textValue){
+                key=textValue;
+            }
+            console.log("assign key: " + key);
+            var xhr = new XMLHttpRequest;
+            xhr.open('GET', 'http://localhost:3000/assign-fqa?key=' + encodeURI(key), true);
             //xhr.onload = function (e) {alert(xhr.responseText)};
             xhr.send();
         });
@@ -111,6 +191,15 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }, false);
 
+    document.getElementById('clickAUReject').addEventListener('click', function () {
+        chrome.tabs.getSelected(null, function (tab) {
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            var xhr = new XMLHttpRequest;
+            xhr.open('GET', 'http://localhost:3000/au-reject?key=' + key, true);
+            //xhr.onload = function (e) {alert(xhr.responseText)};
+            xhr.send();
+        });
+    }, false);
 
     function search() {
         var xhr = new XMLHttpRequest;
@@ -159,9 +248,10 @@ document.addEventListener('DOMContentLoaded', function () {
             xhr.open('GET', 'http://localhost:3000/fs-mapping?key=' + key + (full ? "&full=true" : ""), true);
             var id = tab.id;
             xhr.addEventListener("load", function (e) {
-                //alert(xhr.responseText);
+                console.log("response text: ")
+                console.log(xhr.responseText);
                 try {
-                    var result = xhr.responseText;//.replace(/(\r\n|\n|\r)/gm, "<br/>");
+                    var result = xhr.responseText.replace(/`/gm, "'");//.replace(/(\r\n|\n|\r)/gm, "<br/>");
                     var code = [
                         'publish("nzt1",`<pre>'+result+'</pre>`);',
                         'diffy();',
