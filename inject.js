@@ -58,6 +58,10 @@ function diffy() {
         }
 
         display.appendChild(fragment);
+        var actual = document.createElement("div");
+        actual.id="actual"
+        actual.innerHTML = document.getElementById("nzt1").innerHTML;
+        display.appendChild(actual);
 
         if (document.getElementById("nzt1")) document.getElementById("nzt1").parentElement.removeChild(document.getElementById("nzt1"))
 

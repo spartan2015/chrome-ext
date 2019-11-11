@@ -67,6 +67,28 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }, false);
 
+    document.getElementById('linkFQA').addEventListener('click', function () {
+        chrome.tabs.getSelected(null, function (tab) {
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            console.log("link pa: " + key);
+            var xhr = new XMLHttpRequest;
+            xhr.open('GET', 'http://localhost:3000/link-fqa?key=' + encodeURI(key), true);
+            //xhr.onload = function (e) {alert(xhr.responseText)};
+            xhr.send();
+        });
+    }, false);
+
+    document.getElementById('copyFQA').addEventListener('click', function () {
+        chrome.tabs.getSelected(null, function (tab) {
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            console.log("copy fqa: " + key);
+            var xhr = new XMLHttpRequest;
+            xhr.open('GET', 'http://localhost:3000/copy-fqa?to=' + encodeURI(key) + "&from="+document.getElementById("copyFQAFrom").value, true);
+            //xhr.onload = function (e) {alert(xhr.responseText)};
+            xhr.send();
+        });
+    }, false);
+
     document.getElementById('paApprove').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
             var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
