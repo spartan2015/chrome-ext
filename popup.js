@@ -182,6 +182,16 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }, false);
 
+    document.getElementById('clickFSTC-reject').addEventListener('click', function () {
+        chrome.tabs.getSelected(null, function (tab) {
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            var xhr = new XMLHttpRequest;
+            xhr.open('GET', 'http://localhost:3000/fstc-reject?key=' + key, true);
+            //xhr.onload = function (e) {alert(xhr.responseText)};
+            xhr.send();
+        });
+    }, false);
+
     document.getElementById('clickCR').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
             var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
@@ -198,6 +208,16 @@ document.addEventListener('DOMContentLoaded', function () {
             var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
             var xhr = new XMLHttpRequest;
             xhr.open('GET', 'http://localhost:3000/crSkip?key=' + key, true);
+            //xhr.onload = function (e) {alert(xhr.responseText)};
+            xhr.send();
+        });
+    }, false);
+
+    document.getElementById('clickCRReject').addEventListener('click', function () {
+        chrome.tabs.getSelected(null, function (tab) {
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            var xhr = new XMLHttpRequest;
+            xhr.open('GET', 'http://localhost:3000/cr-reject?key=' + key, true);
             //xhr.onload = function (e) {alert(xhr.responseText)};
             xhr.send();
         });
