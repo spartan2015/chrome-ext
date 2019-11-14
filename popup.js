@@ -67,6 +67,17 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }, false);
 
+    document.getElementById('linkFSTC').addEventListener('click', function () {
+        chrome.tabs.getSelected(null, function (tab) {
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            console.log("link fstc: " + key);
+            var xhr = new XMLHttpRequest;
+            xhr.open('GET', 'http://localhost:3000/link-fstc?key=' + encodeURI(key), true);
+            //xhr.onload = function (e) {alert(xhr.responseText)};
+            xhr.send();
+        });
+    }, false);
+
     document.getElementById('linkFQA').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
             var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
