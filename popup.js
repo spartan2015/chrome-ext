@@ -39,6 +39,9 @@ document.addEventListener('DOMContentLoaded', function () {
             var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
             console.log("assign epic key: " + key);
             var xhr = new XMLHttpRequest;
+            xhr.addEventListener("error", function(){
+                chrome.tabs.executeScript(id, {code: "alert('Error processing Epic Assign')"});
+            });
             xhr.open('GET', 'http://localhost:3000/assign-epic?key=' + encodeURI(key), true);
             //xhr.onload = function (e) {alert(xhr.responseText)};
             xhr.send();
@@ -50,6 +53,9 @@ document.addEventListener('DOMContentLoaded', function () {
             var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
             console.log("link pa: " + key);
             var xhr = new XMLHttpRequest;
+            xhr.addEventListener("error", function(){
+                chrome.tabs.executeScript(id, {code: "alert('Error processing Link PA')"});
+            });
             xhr.open('GET', 'http://localhost:3000/link-pa?key=' + encodeURI(key), true);
             //xhr.onload = function (e) {alert(xhr.responseText)};
             xhr.send();
@@ -61,6 +67,9 @@ document.addEventListener('DOMContentLoaded', function () {
             var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
             console.log("link pa: " + key);
             var xhr = new XMLHttpRequest;
+            xhr.addEventListener("error", function(){
+                chrome.tabs.executeScript(id, {code: "alert('Error processing Link CR ')"});
+            });
             xhr.open('GET', 'http://localhost:3000/link-cr?key=' + encodeURI(key), true);
             //xhr.onload = function (e) {alert(xhr.responseText)};
             xhr.send();
@@ -72,6 +81,9 @@ document.addEventListener('DOMContentLoaded', function () {
             var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
             console.log("link fstc: " + key);
             var xhr = new XMLHttpRequest;
+            xhr.addEventListener("error", function(){
+                chrome.tabs.executeScript(id, {code: "alert('Error processing Link FSTC ')"});
+            });
             xhr.open('GET', 'http://localhost:3000/link-fstc?key=' + encodeURI(key), true);
             //xhr.onload = function (e) {alert(xhr.responseText)};
             xhr.send();
@@ -83,6 +95,9 @@ document.addEventListener('DOMContentLoaded', function () {
             var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
             console.log("link pa: " + key);
             var xhr = new XMLHttpRequest;
+            xhr.addEventListener("error", function(){
+                chrome.tabs.executeScript(id, {code: "alert('Error processing Link FQA ')"});
+            });
             xhr.open('GET', 'http://localhost:3000/link-fqa?key=' + encodeURI(key), true);
             //xhr.onload = function (e) {alert(xhr.responseText)};
             xhr.send();
@@ -94,6 +109,9 @@ document.addEventListener('DOMContentLoaded', function () {
             var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
             console.log("copy fqa: " + key);
             var xhr = new XMLHttpRequest;
+            xhr.addEventListener("error", function(){
+                chrome.tabs.executeScript(id, {code: "alert('Error processing Copy FQA ')"});
+            });
             xhr.open('GET', 'http://localhost:3000/copy-fqa?to=' + encodeURI(key) + "&from="+document.getElementById("copyFQAFrom").value, true);
             //xhr.onload = function (e) {alert(xhr.responseText)};
             xhr.send();
@@ -105,6 +123,9 @@ document.addEventListener('DOMContentLoaded', function () {
             var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
             console.log("link pa: " + key);
             var xhr = new XMLHttpRequest;
+            xhr.addEventListener("error", function(){
+                chrome.tabs.executeScript(id, {code: "alert('Error processing PA Aprove ')"});
+            });
             xhr.open('GET', 'http://localhost:3000/pa-approve?key=' + encodeURI(key), true);
             //xhr.onload = function (e) {alert(xhr.responseText)};
             xhr.send();
@@ -116,6 +137,9 @@ document.addEventListener('DOMContentLoaded', function () {
             var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
             console.log("link pa: " + key);
             var xhr = new XMLHttpRequest;
+            xhr.addEventListener("error", function(){
+                chrome.tabs.executeScript(id, {code: "alert('Error processing PA Reject ')"});
+            });
             xhr.open('GET', 'http://localhost:3000/pa-reject?key=' + encodeURI(key), true);
             //xhr.onload = function (e) {alert(xhr.responseText)};
             xhr.send();
@@ -127,6 +151,9 @@ document.addEventListener('DOMContentLoaded', function () {
             var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
             console.log("reject epic key: " + key);
             var xhr = new XMLHttpRequest;
+            xhr.addEventListener("error", function(){
+                chrome.tabs.executeScript(id, {code: "alert('Error processing Reject Epic ')"});
+            });
             xhr.open('GET', 'http://localhost:3000/reject-epic?key=' + encodeURI(key) + "&reason="+encodeURIComponent(document.getElementById("epicRejectReason").value), true);
             //xhr.onload = function (e) {alert(xhr.responseText)};
             xhr.send();
@@ -142,6 +169,9 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             console.log("assign key: " + key);
             var xhr = new XMLHttpRequest;
+            xhr.addEventListener("error", function(){
+                chrome.tabs.executeScript(id, {code: "alert('Error processing Assign')"});
+            });
             xhr.open('GET', 'http://localhost:3000/assign?key=' + encodeURI(key), true);
             //xhr.onload = function (e) {alert(xhr.responseText)};
             xhr.send();
@@ -157,6 +187,9 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             console.log("assign key: " + key);
             var xhr = new XMLHttpRequest;
+            xhr.addEventListener("error", function(){
+                chrome.tabs.executeScript(id, {code: "alert('Error processing Assign FQA ')"});
+            });
             xhr.open('GET', 'http://localhost:3000/assign-fqa?key=' + encodeURI(key), true);
             //xhr.onload = function (e) {alert(xhr.responseText)};
             xhr.send();
@@ -167,6 +200,9 @@ document.addEventListener('DOMContentLoaded', function () {
         chrome.tabs.getSelected(null, function (tab) {
             var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
             var xhr = new XMLHttpRequest;
+            xhr.addEventListener("error", function(){
+                chrome.tabs.executeScript(id, {code: "alert('Error processing FS Approve')"});
+            });
             xhr.open('GET', 'http://localhost:3000/fs?key=' + key, true);
             //xhr.onload = function (e) {alert(xhr.responseText)};
             xhr.send();
@@ -177,6 +213,9 @@ document.addEventListener('DOMContentLoaded', function () {
         chrome.tabs.getSelected(null, function (tab) {
             var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
             var xhr = new XMLHttpRequest;
+            xhr.addEventListener("error", function(){
+                chrome.tabs.executeScript(id, {code: "alert('Error processing FS Approve OOP ')"});
+            });
             xhr.open('GET', 'http://localhost:3000/fs-approve-oop?key=' + key, true);
             //xhr.onload = function (e) {alert(xhr.responseText)};
             xhr.send();
@@ -187,6 +226,9 @@ document.addEventListener('DOMContentLoaded', function () {
         chrome.tabs.getSelected(null, function (tab) {
             var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
             var xhr = new XMLHttpRequest;
+            xhr.addEventListener("error", function(){
+                chrome.tabs.executeScript(id, {code: "alert('Error processing FS Reject ')"});
+            });
             xhr.open('GET', 'http://localhost:3000/fs-reject?key=' + key, true);
             //xhr.onload = function (e) {alert(xhr.responseText)};
             xhr.send();
@@ -197,6 +239,9 @@ document.addEventListener('DOMContentLoaded', function () {
         chrome.tabs.getSelected(null, function (tab) {
             var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
             var xhr = new XMLHttpRequest;
+            xhr.addEventListener("error", function(){
+                chrome.tabs.executeScript(id, {code: "alert('Error processing FSTC Approve ')"});
+            });
             xhr.open('GET', 'http://localhost:3000/fstc?key=' + key, true);
             //xhr.onload = function (e) {alert(xhr.responseText)};
             xhr.send();
@@ -207,6 +252,9 @@ document.addEventListener('DOMContentLoaded', function () {
         chrome.tabs.getSelected(null, function (tab) {
             var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
             var xhr = new XMLHttpRequest;
+            xhr.addEventListener("error", function(){
+                chrome.tabs.executeScript(id, {code: "alert('Error processing FSTC Reject')"});
+            });
             xhr.open('GET', 'http://localhost:3000/fstc-reject?key=' + key, true);
             //xhr.onload = function (e) {alert(xhr.responseText)};
             xhr.send();
@@ -217,6 +265,9 @@ document.addEventListener('DOMContentLoaded', function () {
         chrome.tabs.getSelected(null, function (tab) {
             var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
             var xhr = new XMLHttpRequest;
+            xhr.addEventListener("error", function(){
+                chrome.tabs.executeScript(id, {code: "alert('Error processing CR Approve ')"});
+            });
             xhr.open('GET', 'http://localhost:3000/cr?key=' + key, true);
             //xhr.onload = function (e) {alert(xhr.responseText)};
             xhr.send();
@@ -228,6 +279,9 @@ document.addEventListener('DOMContentLoaded', function () {
         chrome.tabs.getSelected(null, function (tab) {
             var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
             var xhr = new XMLHttpRequest;
+            xhr.addEventListener("error", function(){
+                chrome.tabs.executeScript(id, {code: "alert('Error processing CR Skip ')"});
+            });
             xhr.open('GET', 'http://localhost:3000/crSkip?key=' + key, true);
             //xhr.onload = function (e) {alert(xhr.responseText)};
             xhr.send();
@@ -238,6 +292,9 @@ document.addEventListener('DOMContentLoaded', function () {
         chrome.tabs.getSelected(null, function (tab) {
             var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
             var xhr = new XMLHttpRequest;
+            xhr.addEventListener("error", function(){
+                chrome.tabs.executeScript(id, {code: "alert('Error processing CR Reject ')"});
+            });
             xhr.open('GET', 'http://localhost:3000/cr-reject?key=' + key, true);
             //xhr.onload = function (e) {alert(xhr.responseText)};
             xhr.send();
@@ -248,6 +305,9 @@ document.addEventListener('DOMContentLoaded', function () {
         chrome.tabs.getSelected(null, function (tab) {
             var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
             var xhr = new XMLHttpRequest;
+            xhr.addEventListener("error", function(){
+                chrome.tabs.executeScript(id, {code: "alert('Error processing AU Approve ')"});
+            });
             xhr.open('GET', 'http://localhost:3000/au?key=' + key, true);
             //xhr.onload = function (e) {alert(xhr.responseText)};
             xhr.send();
@@ -258,6 +318,9 @@ document.addEventListener('DOMContentLoaded', function () {
         chrome.tabs.getSelected(null, function (tab) {
             var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
             var xhr = new XMLHttpRequest;
+            xhr.addEventListener("error", function(){
+                chrome.tabs.executeScript(id, {code: "alert('Error processing AU Reject ')"});
+            });
             xhr.open('GET', 'http://localhost:3000/au-reject?key=' + key, true);
             //xhr.onload = function (e) {alert(xhr.responseText)};
             xhr.send();
@@ -298,6 +361,9 @@ document.addEventListener('DOMContentLoaded', function () {
         chrome.tabs.getSelected(null, function (tab) {
             var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
             var xhr = new XMLHttpRequest;
+            xhr.addEventListener("error", function(){
+                chrome.tabs.executeScript(id, {code: "alert('Error processing VER ')"});
+            });
             xhr.open('GET', 'http://localhost:3000/ver?key=' + key, true);
             //xhr.onload = function (e) {alert(xhr.responseText)};
             xhr.send();
@@ -308,6 +374,9 @@ document.addEventListener('DOMContentLoaded', function () {
         chrome.tabs.getSelected(null, function (tab) {
             var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
             var xhr = new XMLHttpRequest;
+            xhr.addEventListener("error", function(){
+                chrome.tabs.executeScript(id, {code: "alert('Error processing fs map ')"});
+            });
             xhr.open('GET', 'http://localhost:3000/fs-mapping?key=' + key + (full ? "&full=true" : ""), true);
             var id = tab.id;
             xhr.addEventListener("load", function (e) {
