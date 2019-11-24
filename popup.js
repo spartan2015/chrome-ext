@@ -160,6 +160,34 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }, false);
 
+    document.getElementById('rejectEpicReview').addEventListener('click', function () {
+        chrome.tabs.getSelected(null, function (tab) {
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            console.log("reject epic review for key: " + key);
+            var xhr = new XMLHttpRequest;
+            xhr.addEventListener("error", function(){
+                chrome.tabs.executeScript(id, {code: "alert('Error processing Reject Epic ')"});
+            });
+            xhr.open('GET', 'http://localhost:3000/epic-reject-qe-review?key=' + encodeURI(key), true);
+            //xhr.onload = function (e) {alert(xhr.responseText)};
+            xhr.send();
+        });
+    }, false);
+
+    document.getElementById('approveEpicReview').addEventListener('click', function () {
+        chrome.tabs.getSelected(null, function (tab) {
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            console.log("approve epic review for key: " + key);
+            var xhr = new XMLHttpRequest;
+            xhr.addEventListener("error", function(){
+                chrome.tabs.executeScript(id, {code: "alert('Error processing Reject Epic ')"});
+            });
+            xhr.open('GET', 'http://localhost:3000/epic-approve-qe-review?key=' + encodeURI(key), true);
+            //xhr.onload = function (e) {alert(xhr.responseText)};
+            xhr.send();
+        });
+    }, false);
+
     document.getElementById('assign').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
             var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
