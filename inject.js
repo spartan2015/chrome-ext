@@ -11,6 +11,17 @@ function publish(id, result) {
     div.innerHTML = result;
     document.querySelector("div#description-val").parentElement.appendChild(div);
 }
+
+function displayOnly() {
+    console.log("display only");
+
+    var  display = document.querySelector("div#description-val").parentElement;
+    var actual = document.createElement("div");
+    actual.id="actual"
+    actual.innerHTML = document.getElementById("nzt1").innerHTML;
+    display.appendChild(actual);
+}
+
 function diffy() {
     console.log("diffy()")
     try {

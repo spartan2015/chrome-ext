@@ -302,6 +302,18 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }, false);
 
+    document.getElementById('crComments').addEventListener('click', function () {
+        chrome.tabs.getSelected(null, function (tab) {
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            var xhr = new XMLHttpRequest;
+            xhr.addEventListener("error", function(){
+                chrome.tabs.executeScript(id, {code: "alert('Error processing CR Comments ')"});
+            });
+            xhr.open('GET', 'http://localhost:3000/cr-comments?key=' + key, true);
+            //xhr.onload = function (e) {alert(xhr.responseText)};
+            xhr.send();
+        });
+    }, false);
 
     document.getElementById('clickCRSkip').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
@@ -432,6 +444,39 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     document.getElementById('clickMap').addEventListener('click', fsMapHandler(), false);
+
+    document.getElementById('clickMapOnly').addEventListener('click',function () {
+        chrome.tabs.getSelected(null, function (tab) {
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            var xhr = new XMLHttpRequest;
+            xhr.addEventListener("error", function(){
+                chrome.tabs.executeScript(id, {code: "alert('Error processing fs map ')"});
+            });
+            xhr.open('GET', 'http://localhost:3000/fs-mapping?key=' + key + (false ? "&full=true" : ""), true);
+            var id = tab.id;
+            xhr.addEventListener("load", function (e) {
+                console.log("response text: ")
+                console.log(xhr.responseText);
+                try {
+                    var result = xhr.responseText.replace(/`/gm, "'");//.replace(/(\r\n|\n|\r)/gm, "<br/>");
+                    var code = [
+                        'publish("nzt1",`<pre>'+result+'</pre>`);',
+                        'displayOnly();',
+                    ].join("\n");
+                } catch (ex) {
+                    alert(ex);
+                }
+
+                /* Injt the code into the current tab */
+                chrome.tabs.executeScript(id, {code: code});
+
+            }, false);
+
+            xhr.send(null);
+
+        });
+    }, false);
+
     document.getElementById('fsMapFull').addEventListener('click', fsMapHandler(true), false);
 
 }, false);
