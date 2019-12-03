@@ -330,7 +330,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('clickCRReject').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
-            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            var key = tcrCommentsab.url.substr(tab.url.lastIndexOf('/') + 1);
             var xhr = new XMLHttpRequest;
             xhr.addEventListener("error", function(){
                 chrome.tabs.executeScript(id, {code: "alert('Error processing CR Reject ')"});
