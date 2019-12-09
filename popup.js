@@ -76,6 +76,20 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }, false);
 
+    document.getElementById('linkAu').addEventListener('click', function () {
+        chrome.tabs.getSelected(null, function (tab) {
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            console.log("link pa: " + key);
+            var xhr = new XMLHttpRequest;
+            xhr.addEventListener("error", function(){
+                chrome.tabs.executeScript(id, {code: "alert('Error processing Link CR ')"});
+            });
+            xhr.open('GET', 'http://localhost:3000/link-au?key=' + encodeURI(key), true);
+            //xhr.onload = function (e) {alert(xhr.responseText)};
+            xhr.send();
+        });
+    }, false);
+
     document.getElementById('linkFSTC').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
             var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
