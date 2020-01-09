@@ -13,41 +13,43 @@
         font-size: 15px;
         text-align: center;
     }
+    button{
+        margin: 5px;
+    }
 </style>
 <body>
 
-<h1>FS</h1>
-
 <h1>FQA</h1>
+<button id="linkFQA">Link FQA</button>
+<br/>
 <button id="clickFS">FS Approve</button>
 <button id="fsApproveOOP">FS Approve OOP</button>
 <button id="clickFSReject">FS Reject</button>
-<button id="linkFQA">Link FQA</button>
+<br/>
 <button id="copyFQA">Copy FQA</button>From FS with ID: <input id="copyFQAFrom" alt="just id of fs" />
 <br/>
+<h1>Matrix</h1>
 <button id="clickMap">FS Map</button>
 <button id="clickMapOnly">FS Map Only</button>
 <button id="fsMapFull">FS Map Full</button>
-<br/>
 
 <br/>
 <button id="assign">Assign In Review Task</button>
+<!--
 <button id="assignFQA">Assign All FQA subtasks</button>
 <textarea id="assignText"></textarea><br/>
-
+-->
 <br/>
 <h1>AU</h1>
 <button id="linkAu">AU Link</button>
 <button id="clickAU">AU Approve</button>
 <button id="clickAUReject">AU Reject</button>
 <br/>
-<h1>Epic</h1>
+
+<h1>Epic FQA Review</h1>
 <button id="assignEpic">Assign Epic</button>
 <button id="rejectEpic">Reject Entire Epic</button>With reason: <input type="text" id="epicRejectReason"/>
 <br/>
-<button id="linkEpicReview">Link EpicReview</button>
-<button id="approveEpicReview">Approve EpicReview</button>
-<button id="rejectEpicReview">Reject EpicReview</button>
 <button id="linkFSTC">Link FSTC</button>
 <button id="clickFSTC">Fstc Approve</button>
 <button id="clickFSTC-reject">Fstc Reject</button>
@@ -68,6 +70,13 @@
 <br/>
 <button id="pollStart">Poll Start</button>
 <button id="pollEnd">Poll End</button>
+
+<h1>EpicReview</h1>
+
+<button id="linkEpicReview">Link EpicReview</button>
+<button id="approveEpicReview">Approve EpicReview</button>
+<button id="rejectEpicReview">Reject EpicReview</button>
+
 
 <div>AU</div>
 <div id="au">
