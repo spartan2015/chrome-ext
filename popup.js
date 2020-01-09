@@ -219,10 +219,10 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('assign').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
             var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
-            var textValue = document.getElementById('assignText').value;
+            /*var textValue = document.getElementById('assignText').value;
             if (textValue){
                 key=textValue;
-            }
+            }*/
             console.log("assign key: " + key);
             var xhr = new XMLHttpRequest;
             xhr.addEventListener("error", function(){
@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }, false);
 
-    document.getElementById('assignFQA').addEventListener('click', function () {
+   /* document.getElementById('assignFQA').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
             var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
             var textValue = document.getElementById('assignText').value;
@@ -250,7 +250,7 @@ document.addEventListener('DOMContentLoaded', function () {
             //xhr.onload = function (e) {alert(xhr.responseText)};
             xhr.send();
         });
-    }, false);
+    }, false);*/
 
     document.getElementById('clickFS').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
