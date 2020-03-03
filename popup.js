@@ -182,10 +182,35 @@ document.addEventListener('DOMContentLoaded', function () {
             xhr.addEventListener("error", function(){
                 chrome.tabs.executeScript(id, {code: "alert('Error processing Reject Epic ')"});
             });
-            xhr.open('GET', 'http://localhost:3000/reject-epic?key=' + encodeURI(key) + "&reason="+encodeURIComponent(document.getElementById("epicRejectReason").value), true);
+            xhr.open('GET', 'http://localhost:3000/reject-epic?key=' + encodeURI(key) + "&reason="+encodeURIComponent(document.getElementById("epicMoveReason").value), true);
             //xhr.onload = function (e) {alert(xhr.responseText)};
             xhr.send();
         });
+    }, false);
+
+    document.getElementById('approveEntireEpic').addEventListener('click', function () {
+        chrome.tabs.getSelected(null, function (tab) {
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            console.log("reject epic key: " + key);
+            var xhr = new XMLHttpRequest;
+            xhr.addEventListener("error", function(){
+                chrome.tabs.executeScript(id, {code: "alert('Error processing Reject Epic ')"});
+            });
+            xhr.open('GET', 'http://localhost:3000/approve-epic-fses?key=' + encodeURI(key) + "&reason="+encodeURIComponent(document.getElementById("epicMoveReason").value), true);
+            //xhr.onload = function (e) {alert(xhr.responseText)};
+            xhr.send();
+        });
+    }, false);
+
+
+    document.getElementById('resetCache').addEventListener('click', function () {
+        var xhr = new XMLHttpRequest;
+        xhr.addEventListener("error", function(){
+            chrome.tabs.executeScript(id, {code: "alert('Error processing Reject Epic ')"});
+        });
+        xhr.open('GET', 'http://localhost:3000/reset-cache', true);
+        //xhr.onload = function (e) {alert(xhr.responseText)};
+        xhr.send();
     }, false);
 
     document.getElementById('rejectEpicReview').addEventListener('click', function () {
@@ -451,7 +476,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.log("response text: ")
                 console.log(xhr.responseText);
                 try {
-                    var result = xhr.responseText.replace(/`/gm, "'");//.replace(/(\r\n|\n|\r)/gm, "<br/>");
+                    var result = xhr.responseText
+                        .replace(/`/gm, "'")
+                        .replace(/\[([^\|]+)\|.+\]/gm,"$1")
+                    ;
+                    //.replace(/(\r\n|\n|\r)/gm, "<br/>");
                     var code = [
                         'publish("nzt1",`<pre>'+result+'</pre>`);',
                         'diffy();',

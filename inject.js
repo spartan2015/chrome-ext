@@ -29,9 +29,9 @@ function diffy() {
 
         var first = document.getElementById("nzt1").firstChild.textContent;
 
-        var second = document.querySelector("div#description-val").textContent;
+        var second = document.querySelector("div#description-val").textContent.replace(/\[([^\|]+)\|.+\]/gm,"$1");
         if (document.querySelector("div#field-customfield_38413")) {
-            second = document.querySelector("div#field-customfield_38413 > div.concise > div.flooded").textContent;
+            second = document.querySelector("div#field-customfield_38413 > div.concise > div.flooded").textContent.replace(/\[([^\|]+)\|.+\]/gm,"$1");
         }
 
         /* publish("nzt2", "<pre>" +
@@ -74,7 +74,6 @@ function diffy() {
         }
 
         display.appendChild(fragment);
-
 
         if (document.getElementById("nzt1")) document.getElementById("nzt1").parentElement.removeChild(document.getElementById("nzt1"))
 
