@@ -1,85 +1,103 @@
-/**
- * Created by eXpert on 10/3/2019.
- */
+console.log("LOADING IQB");
 
-function publish(id, result) {
-    console.log("publish: " + result);
-    var div = document.createElement("div");
-    div.id = id;
-    div.style.border = "1px solid red";
-    div.style.display = 'none';
-    div.innerHTML = result;
-    document.querySelector("div#description-val").parentElement.appendChild(div);
-}
+$( document ).ready(function() {
 
-function displayOnly() {
-    console.log("display only");
-
-    var  display = document.querySelector("div#description-val").parentElement;
-    var actual = document.createElement("div");
-    actual.id="actual"
-    actual.innerHTML = document.getElementById("nzt1").innerHTML;
-    display.appendChild(actual);
-}
-
-function diffy() {
-    console.log("diffy()")
-    try {
-        if (document.getElementById("mapElement")) document.getElementById("mapElement").parentElement.removeChild(document.getElementById("mapElement"))
-
-        var first = document.getElementById("nzt1").firstChild.textContent;
-
-        var second = document.querySelector("div#description-val").textContent;
-        if (document.querySelector("div#field-customfield_38413")) {
-            second = document.querySelector("div#field-customfield_38413 > div.concise > div.flooded").textContent;
-        }
-
-        /* publish("nzt2", "<pre>" +
-         JSON.stringify(
-         Diff.diffLines(
-         first,
-         second)
-         , null, "\t")
-         + "</pre>");*/
-        console.log("first");
-        console.log(first)
-        console.log('second')
-        console.log(second)
-        console.log("diffy() diff")
-        var diff = Diff.diffChars(first, second),
-            display = document.querySelector("div#description-val").parentElement,
-            fragment = document.createElement("div");
-        fragment.id = "mapElement";
-
-        var actual = document.createElement("div");
-        actual.id="actual"
-        actual.innerHTML = document.getElementById("nzt1").innerHTML;
-        display.appendChild(actual);
-
-        console.log("diffy() display")
-        diff.forEach(function (part) {
-            // green for additions, red for deletions
-            // grey for common parts
-            color = part.added ? 'green' :
-                part.removed ? 'red' : 'grey';
-            span = document.createElement('span');
-            span.style.color = color;
-            span.appendChild(document
-                .createTextNode(part.value));
-            fragment.appendChild(span);
-        });
-
-        if (!display) {
-            alert("no display");
-        }
-
-        display.appendChild(fragment);
-
-
-        if (document.getElementById("nzt1")) document.getElementById("nzt1").parentElement.removeChild(document.getElementById("nzt1"))
-
-    } catch (e) {
-        console.log(e);
-        alert(e);
+    console.log("IQB - LOADED");
+    let log = function (data) {
+        $('.requestsLog').append(`<div>${data}</div>`)
     }
-}
+
+    $.ajaxSetup({
+        headers: {
+            'Authorization': "Basic dmlyaW1pYTpob3dJRjIxMG12OA=="
+        }
+    });
+
+/*
+https://docs.google.com/document/d/1VPA99yebFMqM1FLwn7GHuTXlpR7RqDVbmZM6035WzQI/edit#heading=h.i35a9q1rqui4
+
+
+/check/codereview?issueKey=<ticket-key>
+/check/aufeaturereview?issueKey=<ticket-key>
+/check/codereview?issueKey=<ticket-key>
+/check/audocreview?issueKey=<ticket-key>
+/check/auepicreview?issueKey=<ticket-key>
+
+
+
+/comments?action=reject&issueKey=<ticket-key>
+/comments?action=rejectComments&issueKey=<ticket-key>
+/comments?action=approve&issueKey=<ticket-key>
+/comments?action=approve&issueKey=<ticket-key>
+/comments?action=reject&issueKey=<ticket-key>
+/comments?action=reject&issueKey=<ticket-key>
+/comments?action=approve&issueKey=<ticket-key>
+/comments?action=reject&issueKey=<ticket-key>
+/comments?action=approve&issueKey=<ticket-key>
+/comments?action=reject&issueKey=<ticket-key>
+/comments?action=approve&issueKey=<ticket-key>
+
+*/
+$('.aui-toolbar2-primary').append(`<div>My Checks:
+            <button id="qeCheckCR">Check CR</button>
+            </div>`)
+		
+
+    $('.aui-toolbar2-primary').append(`<div>My Actions
+            <button id="qeApprove">Approve</button>
+            <button id="qeComment">Comment</button>
+            <button id="qeReject">Reject</button>
+        <div><div class="requestsLog"></div>`)
+
+ document.getElementById('qeCheckCR').addEventListener('click', function () {
+        let key = $(".issue-link").attr("data-issue-key");
+
+       log("Approve key: " + key);
+
+        $.post("https://pa-qe-jirawf-api-prod.private.central-eks.aureacentral.com/check/codereview?issueKey="+key, function( data ) {
+            log( data );
+        }).fail(function(error, data) {
+            log( "error" );
+            log( JSON.stringify( arguments) );
+        })
+
+    }, false);
+
+    document.getElementById('qeApprove').addEventListener('click', function () {
+        let key = $(".issue-link").attr("data-issue-key");
+
+       log("Approve key: " + key);
+
+        $.post("https://pa-qe-jirawf-api-prod.private.central-eks.aureacentral.com/comments?action=approve&issueKey="+key, function( data ) {
+            log( data );
+        }).fail(function(error, data) {
+            log( "error" );
+            log( JSON.stringify( arguments) );
+        })
+
+    }, false);
+
+    document.getElementById('qeComment').addEventListener('click', function () {
+        let key = $(".issue-link").attr("data-issue-key");
+
+       log("Approve key: " + key);
+        $.post("https://pa-qe-jirawf-api-prod.private.central-eks.aureacentral.com/comments?action=rejectComments&issueKey="+key, function( data ) {
+            log( data );
+        }).fail(function(error) {
+            log( "error" );
+              log( JSON.stringify( arguments) );
+        })
+    }, false);
+
+    document.getElementById('qeReject').addEventListener('click', function () {
+        let key = $(".issue-link").attr("data-issue-key");
+
+       log("Approve key: " + key);
+        $.post("https://pa-qe-jirawf-api-prod.private.central-eks.aureacentral.com/comments?action=reject&issueKey="+key, function( data ) {
+            log( data );
+        }).fail(function(error) {
+            log( "error" );
+              log( JSON.stringify( arguments) );
+        })
+    }, false);
+});

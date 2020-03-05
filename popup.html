@@ -2,6 +2,8 @@
 <html>
 <head>
     <title>FS</title>
+    <script src="jquery-3.4.1.min.js"></script>
+    <script src="popup.js"></script>
 </head>
 <style type="text/css">
     body {
@@ -18,86 +20,18 @@
     }
 </style>
 <body>
+    <div>
+        <div>QE Review</div>
+        <div>
+            <button id="qeApprove">Approve</button>
+            <button id="qeComment">Comment</button>
+            <button id="qeReject">Reject</button>
+        </div>
+    </div>
 
-<h1>FQA</h1>
-<br/><button id="assign">Assign In Review Task</button>
-<button id="linkFQA">Link FQA</button>
-<br/>
-<button id="clickFS">FS Approve</button>
-<button id="fsApproveOOP">FS Approve OOP</button>
-<button id="clickFSReject">FS Reject</button>
-<br/>
-<button id="copyFQA">Copy FQA</button>From FS with ID: <input id="copyFQAFrom" alt="just id of fs" />
-<br/>
-<h1>Matrix</h1>
-<button id="clickMap">FS Map</button>
-<button id="clickMapOnly">FS Map Only</button>
-<button id="fsMapFull">FS Map Full</button>
+    <div class="requestsLog"></div>
 
-
-<!--
-<button id="assignFQA">Assign All FQA subtasks</button>
-<textarea id="assignText"></textarea><br/>
--->
-<br/>
-<h1>AU</h1>
-<button id="linkAu">AU Link</button>
-<button id="clickAU">AU Approve</button>
-<button id="clickAUReject">AU Reject</button>
-<br/>
-
-<h1>Epic FQA Review</h1>
-<button id="assignEpic">Assign Epic</button>
-<button id="rejectEpic">Reject Entire Epic</button>With reason: <input type="text" id="epicRejectReason"/>
-<br/>
-<button id="linkFSTC">Link FSTC</button>
-<button id="clickFSTC">Fstc Approve</button>
-<button id="clickFSTC-reject">Fstc Reject</button>
-<br/>
-<h1>PA</h1>
-<button id="linkPa">Link Pa</button>
-<button id="paApprove">Approve Pa</button>
-<button id="paReject">Reject Pa</button>
-<br/>
-<button id="clickVER">Verification Approve</button>
-<br/>
-<h1>CR</h1>
-<button id="crComments">CR Comments</button>
-<button id="clickCR">CR Approve</button>
-<button id="clickCRSkip">CR Skip</button>
-<button id="clickCRReject">CR Reject</button>
-<button id="linkCr">Link CR</button>
-<br/>
-<button id="pollStart">Poll Start</button>
-<button id="pollEnd">Poll End</button>
-
-<h1>EpicReview</h1>
-
-<button id="linkEpicReview">Link EpicReview</button>
-<button id="approveEpicReview">Approve EpicReview</button>
-<button id="rejectEpicReview">Reject EpicReview</button>
-
-
-<div>AU</div>
-<div id="au">
-</div>
-<div>FQA</div>
-<div id="fqa">
-</div>
-<div>Verification</div>
-<div id="ver">
-</div>
-<div>Review</div>
-<div id="rev">
-</div>
-
-<h1>Diff</h1>
-
-<textarea id="diff1"></textarea>
-<textarea id="diff2"></textarea>
-<button id="diff"></button>
-<div id="display"></div>
 </body>
-<script src="diff.min.js"></script>
-<script src="popup.js"></script>
+
+
 </html>
