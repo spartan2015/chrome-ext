@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('assignEpic').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
-            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1, tab.url.lastIndexOf("?"))
             console.log("assign epic key: " + key);
             var xhr = new XMLHttpRequest;
             xhr.addEventListener("error", function(){
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('linkPa').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
-            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1, tab.url.lastIndexOf("?"))
             console.log("link pa: " + key);
             var xhr = new XMLHttpRequest;
             xhr.addEventListener("error", function(){
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('linkCr').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
-            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1, tab.url.lastIndexOf("?"))
             console.log("link pa: " + key);
             var xhr = new XMLHttpRequest;
             xhr.addEventListener("error", function(){
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('linkEpicReview').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
-            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1, tab.url.lastIndexOf("?"))
             console.log("link-epic-review: " + key);
             var xhr = new XMLHttpRequest;
             xhr.addEventListener("error", function(){
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('linkAu').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
-            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1, tab.url.lastIndexOf("?"))
             console.log("link pa: " + key);
             var xhr = new XMLHttpRequest;
             xhr.addEventListener("error", function(){
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('linkFSTC').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
-            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1, tab.url.lastIndexOf("?"))
             console.log("link fstc: " + key);
             var xhr = new XMLHttpRequest;
             xhr.addEventListener("error", function(){
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('linkFQA').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
-            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1, tab.url.lastIndexOf("?"))
             console.log("link pa: " + key);
             var xhr = new XMLHttpRequest;
             xhr.addEventListener("error", function(){
@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('copyFQA').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
-            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1, tab.url.lastIndexOf("?"))
             console.log("copy fqa: " + key);
             var xhr = new XMLHttpRequest;
             xhr.addEventListener("error", function(){
@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('paApprove').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
-            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1, tab.url.lastIndexOf("?"))
             console.log("link pa: " + key);
             var xhr = new XMLHttpRequest;
             xhr.addEventListener("error", function(){
@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('paReject').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
-            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1, tab.url.lastIndexOf("?"))
             console.log("link pa: " + key);
             var xhr = new XMLHttpRequest;
             xhr.addEventListener("error", function(){
@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('rejectEpic').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
-            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1, tab.url.lastIndexOf("?"))
             console.log("reject epic key: " + key);
             var xhr = new XMLHttpRequest;
             xhr.addEventListener("error", function(){
@@ -188,9 +188,11 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }, false);
 
+    
+    
     document.getElementById('approveEntireEpic').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
-            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1, tab.url.lastIndexOf("?"))
             console.log("reject epic key: " + key);
             var xhr = new XMLHttpRequest;
             xhr.addEventListener("error", function(){
@@ -215,7 +217,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('rejectEpicReview').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
-            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1, tab.url.lastIndexOf("?"))
             console.log("reject epic review for key: " + key);
             var xhr = new XMLHttpRequest;
             xhr.addEventListener("error", function(){
@@ -229,7 +231,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('approveEpicReview').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
-            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1, tab.url.lastIndexOf("?"))
             console.log("approve epic review for key: " + key);
             var xhr = new XMLHttpRequest;
             xhr.addEventListener("error", function(){
@@ -243,7 +245,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('assign').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
-            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1, tab.url.lastIndexOf("?"))
             /*var textValue = document.getElementById('assignText').value;
             if (textValue){
                 key=textValue;
@@ -261,7 +263,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
    /* document.getElementById('assignFQA').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
-            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1, tab.url.lastIndexOf("?"))
             var textValue = document.getElementById('assignText').value;
             if (textValue){
                 key=textValue;
@@ -279,7 +281,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('clickFS').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
-            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1, tab.url.lastIndexOf("?"))
             var xhr = new XMLHttpRequest;
             xhr.addEventListener("error", function(){
                 chrome.tabs.executeScript(id, {code: "alert('Error processing FS Approve')"});
@@ -292,7 +294,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('fsApproveOOP').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
-            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1, tab.url.lastIndexOf("?"))
             var xhr = new XMLHttpRequest;
             xhr.addEventListener("error", function(){
                 chrome.tabs.executeScript(id, {code: "alert('Error processing FS Approve OOP ')"});
@@ -305,7 +307,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('clickFSReject').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
-            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1, tab.url.lastIndexOf("?"))
             var xhr = new XMLHttpRequest;
             xhr.addEventListener("error", function(){
                 chrome.tabs.executeScript(id, {code: "alert('Error processing FS Reject ')"});
@@ -318,7 +320,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('clickFSTC').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
-            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1, tab.url.lastIndexOf("?"))
             var xhr = new XMLHttpRequest;
             xhr.addEventListener("error", function(){
                 chrome.tabs.executeScript(id, {code: "alert('Error processing FSTC Approve ')"});
@@ -331,7 +333,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('clickFSTC-reject').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
-            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1, tab.url.lastIndexOf("?"))
             var xhr = new XMLHttpRequest;
             xhr.addEventListener("error", function(){
                 chrome.tabs.executeScript(id, {code: "alert('Error processing FSTC Reject')"});
@@ -344,7 +346,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('clickCR').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
-            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1, tab.url.lastIndexOf("?"))
             var xhr = new XMLHttpRequest;
             xhr.addEventListener("error", function(){
                 chrome.tabs.executeScript(id, {code: "alert('Error processing CR Approve ')"});
@@ -357,7 +359,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('crComments').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
-            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1, tab.url.lastIndexOf("?"))
             var xhr = new XMLHttpRequest;
             xhr.addEventListener("error", function(){
                 chrome.tabs.executeScript(id, {code: "alert('Error processing CR Comments ')"});
@@ -370,7 +372,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('clickCRSkip').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
-            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1, tab.url.lastIndexOf("?"))
             var xhr = new XMLHttpRequest;
             xhr.addEventListener("error", function(){
                 chrome.tabs.executeScript(id, {code: "alert('Error processing CR Skip ')"});
@@ -383,7 +385,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('clickCRReject').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
-            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1, tab.url.lastIndexOf("?"))
             var xhr = new XMLHttpRequest;
             xhr.addEventListener("error", function(){
                 chrome.tabs.executeScript(id, {code: "alert('Error processing CR Reject ')"});
@@ -396,7 +398,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('clickAU').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
-            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1, tab.url.lastIndexOf("?"))
             var xhr = new XMLHttpRequest;
             xhr.addEventListener("error", function(){
                 chrome.tabs.executeScript(id, {code: "alert('Error processing AU Approve ')"});
@@ -409,7 +411,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('clickAUReject').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
-            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1, tab.url.lastIndexOf("?"))
             var xhr = new XMLHttpRequest;
             xhr.addEventListener("error", function(){
                 chrome.tabs.executeScript(id, {code: "alert('Error processing AU Reject ')"});
@@ -431,7 +433,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('pollStart').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
-            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1, tab.url.lastIndexOf("?"))
 
 
 
@@ -441,7 +443,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('pollEnd').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
-            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1, tab.url.lastIndexOf("?"))
             var xhr = new XMLHttpRequest;
             xhr.open('GET', 'http://localhost:3000/au?key=' + key, true);
             //xhr.onload = function (e) {alert(xhr.responseText)};
@@ -452,7 +454,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('clickVER').addEventListener('click', function () {
         chrome.tabs.getSelected(null, function (tab) {
-            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1, tab.url.lastIndexOf("?"))
             var xhr = new XMLHttpRequest;
             xhr.addEventListener("error", function(){
                 chrome.tabs.executeScript(id, {code: "alert('Error processing VER ')"});
@@ -465,7 +467,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var fsMapHandler = function(full) {return function () {
         chrome.tabs.getSelected(null, function (tab) {
-            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1, tab.url.lastIndexOf("?"))
             var xhr = new XMLHttpRequest;
             xhr.addEventListener("error", function(){
                 chrome.tabs.executeScript(id, {code: "alert('Error processing fs map ')"});
@@ -504,7 +506,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('clickMapOnly').addEventListener('click',function () {
         chrome.tabs.getSelected(null, function (tab) {
-            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1);
+            var key = tab.url.substr(tab.url.lastIndexOf('/') + 1, tab.url.lastIndexOf("?"))
             var xhr = new XMLHttpRequest;
             xhr.addEventListener("error", function(){
                 chrome.tabs.executeScript(id, {code: "alert('Error processing fs map ')"});
