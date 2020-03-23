@@ -260,6 +260,25 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             }, false);
 
+        if (document.getElementById('assignDsaldiaz'))
+            document.getElementById('assignDsaldiaz').addEventListener('click', function () {
+                chrome.tabs.getSelected(null, function (tab) {
+                    var key = tab.url.substring(tab.url.lastIndexOf('/') + 1, tab.url.lastIndexOf("?") != -1 ? tab.url.lastIndexOf("?") : tab.url.length)
+                    /*var textValue = document.getElementById('assignText').value;
+                    if (textValue){
+                        key=textValue;
+                    }*/
+                    console.log("assignDsaldiaz key: " + key);
+                    var xhr = new XMLHttpRequest;
+                    xhr.addEventListener("error", function () {
+                        chrome.tabs.executeScript(id, {code: "alert('Error processing Assign')"});
+                    });
+                    xhr.open('GET', 'http://localhost:3000/assign?key=' + encodeURI(key)+ "&toUser=dsaldiaz", true);
+                    //xhr.onload = function (e) {alert(xhr.responseText)};
+                    xhr.send();
+                });
+            }, false);
+
         /* document.getElementById('assignFQA').addEventListener('click', function () {
              chrome.tabs.getSelected(null, function (tab) {
                  var key = tab.url.substring(tab.url.lastIndexOf('/') + 1, tab.url.lastIndexOf("?") !=-1 ? tab.url.lastIndexOf("?") : tab.url.length)
