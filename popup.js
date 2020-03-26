@@ -260,6 +260,26 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             }, false);
 
+        if (document.getElementById('addComment'))
+            document.getElementById('addComment').addEventListener('click', function () {
+                chrome.tabs.getSelected(null, function (tab) {
+                    var key = tab.url.substring(tab.url.lastIndexOf('/') + 1, tab.url.lastIndexOf("?") != -1 ? tab.url.lastIndexOf("?") : tab.url.length)
+                    /*var textValue = document.getElementById('assignText').value;
+                    if (textValue){
+                        key=textValue;
+                    }*/
+                    console.log("comment key: " + key);
+                    var xhr = new XMLHttpRequest;
+                    xhr.addEventListener("error", function () {
+                        chrome.tabs.executeScript(id, {code: "alert('Error processing Assign')"});
+                    });
+                    let nessage = document.getElementById('addCommentMessage').value;
+                    xhr.open('GET', 'http://localhost:3000/comment?key=' + encodeURI(key) + "&message="+encodeURIComponent(nessage), true);
+                    //xhr.onload = function (e) {alert(xhr.responseText)};
+                    xhr.send();
+                });
+            }, false);
+
         if (document.getElementById('assignDsaldiaz'))
             document.getElementById('assignDsaldiaz').addEventListener('click', function () {
                 chrome.tabs.getSelected(null, function (tab) {
