@@ -20,6 +20,50 @@ function displayOnly() {
     actual.id="actual"
     actual.innerHTML = document.getElementById("nzt1").innerHTML;
     display.appendChild(actual);
+
+    highlight()
+}
+
+function highlight(){
+    console.error("highlight")
+    var text = document.getElementById("nzt1").innerHTML
+    let notFound= false;
+    text.split("\n").forEach(e=>{
+        console.log("find ", e);
+        let element = e.replace(/<[^>]+>/gi,'').trim();
+        if (!element){
+            return
+        }
+        element.split("+++").forEach(i=>{
+            let word = i.trim();
+            if (!word){
+                return;
+            }
+            let parent = document.querySelector("div#description-val")
+            if (element.startsWith("P1")){
+                let val = $(`tr:contains(${word})`,parent).css("background-color",'green')
+                if (!val.length){
+                    log(word)
+                    notFound=true
+                }
+            }else{
+                let val = $(`td:contains(${word})`,parent).css("background-color","green")
+                if (!val.length){
+                    log(word)
+                    notFound=true
+                }
+
+            }
+        });
+    })
+    if (notFound){
+        alert("not found")
+    }
+}
+
+function log(word){
+    let parent = document.querySelector("div#description-val")
+    $(parent.parentElement).append(`<div style="background-color:red">${word}</div>`)
 }
 
 function diffy() {

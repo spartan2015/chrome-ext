@@ -34,6 +34,20 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }, false);
 
+        document.getElementById('updateComment').addEventListener('click', function () {
+            chrome.tabs.getSelected(null, function (tab) {
+                var key = tab.url.substring(tab.url.lastIndexOf('/') + 1, tab.url.lastIndexOf("?") != -1 ? tab.url.lastIndexOf("?") : tab.url.length)
+                console.log("assign epic key: " + key);
+                var xhr = new XMLHttpRequest;
+                xhr.addEventListener("error", function (error) {
+                    alert('Error executing: ' + JSON.stringify(xhr)); chrome.tabs.executeScript(tab.id, {code: "alert('Error processing Epic Assign')"});
+                });
+                xhr.open('GET', 'http://localhost:3000/update-comment?key=' + encodeURI(key), true);
+                //xhr.onload = function (e) {alert(xhr.responseText)};
+                xhr.send();
+            });
+        }, false);
+
         document.getElementById('assignEpic').addEventListener('click', function () {
             chrome.tabs.getSelected(null, function (tab) {
                 var key = tab.url.substring(tab.url.lastIndexOf('/') + 1, tab.url.lastIndexOf("?") != -1 ? tab.url.lastIndexOf("?") : tab.url.length)
@@ -353,7 +367,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     xhr.addEventListener("error", function (error) {
                         alert('Error executing: ' + JSON.stringify(xhr)); chrome.tabs.executeScript(tab.id, {code: "alert('Error processing FS Reject ')"});
                     });
-                    xhr.open('GET', 'http://localhost:3000/fs-reject?key=' + key, true);
+                    let message = document.getElementById('fsRejectMessage').value
+                    xhr.open('GET', 'http://localhost:3000/fs-reject?key=' + key +"&message="+encodeURIComponent(message), true);
                     //xhr.onload = function (e) {alert(xhr.responseText)};
                     xhr.send();
                 });
@@ -394,7 +409,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 xhr.addEventListener("error", function (error) {
                     alert('Error executing: ' + JSON.stringify(xhr)); chrome.tabs.executeScript(tab.id, {code: "alert('Error processing CR Approve ')"});
                 });
-                xhr.open('GET', 'http://localhost:3000/cr?key=' + key, true);
+                xhr.open('GET', 'http://localhost:3000/cr-approve?key=' + key, true);
                 //xhr.onload = function (e) {alert(xhr.responseText)};
                 xhr.send();
             });
@@ -448,7 +463,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 xhr.addEventListener("error", function (error) {
                     alert('Error executing: ' + JSON.stringify(xhr)); chrome.tabs.executeScript(tab.id, {code: "alert('Error processing AU Approve ')"});
                 });
-                xhr.open('GET', 'http://localhost:3000/au?key=' + key, true);
+                xhr.open('GET', 'http://localhost:3000/au-approve?key=' + key, true);
                 //xhr.onload = function (e) {alert(xhr.responseText)};
                 xhr.send();
             });

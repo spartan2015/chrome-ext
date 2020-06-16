@@ -21,7 +21,7 @@
         {
             "matches": ["https://jira.devfactory.com/browse/*"],
             "css": ["myStyles.css"],
-            "js": ["inject.js","diff.min.js"]
+            "js": ["jquery-3.4.1.min.js","inject.js","diff.min.js"]
         }
     ]
 
